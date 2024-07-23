@@ -7,7 +7,9 @@ export default defineConfig({
   site:"https://diocal.github.io",
   integrations: [, ],
   output: 'server',
-  adapter:node(),
+  adapter: node({
+    mode: 'standalone', // Especifica el modo de operación del adaptador
+  }),
   server: {
     port: 4321,
     hostname:'localhost',
