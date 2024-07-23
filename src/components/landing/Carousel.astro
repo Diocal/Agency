@@ -132,7 +132,7 @@
         items[newIndex].classList.add('active');
 
         // Remove and re-add the animation class to trigger the animation
-        const textContainer = items[newIndex].querySelector('.text-container');
+        const textContainer = items[newIndex].querySelector('.text-container') as HTMLElement;
         if (textContainer) {
           textContainer.classList.remove('animate-slide-up');
           // Trigger reflow

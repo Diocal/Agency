@@ -88,32 +88,40 @@
     const mobileMenu = document.getElementById('mobile-menu');
     const navbar = document.getElementById('navbar');
 
-    menuButton.addEventListener('click', function () {
-      mobileMenu.classList.toggle('hidden');
-    });
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
 
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 50) {
-        navbar.classList.add('bg-black/50', 'bg-opacity-50');
-      } else {
-        navbar.classList.remove('bg-black/50', 'bg-opacity-50');
-      }
-    });
+    if (navbar) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+          navbar.classList.add('bg-black/50', 'bg-opacity-50');
+        } else {
+          navbar.classList.remove('bg-black/50', 'bg-opacity-50');
+        }
+      });
+    }
 
     // Ensure submenus stay visible on hover with delay
     const submenu = document.querySelectorAll('.relative.group');
     submenu.forEach(item => {
-      let timeout;
+      let timeout: number;
       item.addEventListener('mouseenter', () => {
-        const dropdown = item.querySelector('.group-hover\\:block');
-        clearTimeout(timeout);
-        dropdown.style.display = 'block';
+        const dropdown = item.querySelector('.group-hover\\:block') as HTMLElement;
+        if (dropdown) {
+          clearTimeout(timeout);
+          dropdown.style.display = 'block';
+        }
       });
       item.addEventListener('mouseleave', () => {
-        const dropdown = item.querySelector('.group-hover\\:block');
-        timeout = setTimeout(() => {
-          dropdown.style.display = 'none';
-        }, 200); // Add a delay before hiding the submenu
+        const dropdown = item.querySelector('.group-hover\\:block') as HTMLElement;
+        if (dropdown) {
+          timeout = window.setTimeout(() => {
+            dropdown.style.display = 'none';
+          }, 200); // Add a delay before hiding the submenu
+        }
       });
     });
   });
