@@ -127,7 +127,7 @@
       const indicators = carousel.querySelectorAll('[data-twe-carousel-indicators] button');
       let currentIndex = 0;
 
-      const changeSlide = (newIndex) => {
+      const changeSlide = (newIndex: number) => {
         items[currentIndex].classList.remove('active');
         items[newIndex].classList.add('active');
 
@@ -136,7 +136,7 @@
         if (textContainer) {
           textContainer.classList.remove('animate-slide-up');
           // Trigger reflow
-          const reflow = textContainer.offsetWidth;
+          textContainer.offsetWidth;
           textContainer.classList.add('animate-slide-up');
         }
 
