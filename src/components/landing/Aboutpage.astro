@@ -126,14 +126,14 @@
   </div>
 </section>
 
-<style global>
-  .text-gradient {
+<style>
+  :global(.text-gradient) {
     background: linear-gradient(90deg, rgba(0,255,150,1) 0%, rgba(0,255,255,1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  @keyframes fade-up {
+  :global(@keyframes fade-up) {
     from {
       opacity: 0;
       transform: translateY(20px);
@@ -144,7 +144,7 @@
     }
   }
 
-  @keyframes zoom-in {
+  :global(@keyframes zoom-in) {
     from {
       opacity: 0;
       transform: scale(0.95);
@@ -155,59 +155,59 @@
     }
   }
 
-  .animate-fade-up {
+  :global(.animate-fade-up) {
     animation: fade-up 1s ease-out forwards;
   }
 
-  .animate-zoom-in {
+  :global(.animate-zoom-in) {
     animation: zoom-in 1s ease-out forwards;
   }
 
-  .delay-100 {
+  :global(.delay-100) {
     animation-delay: 0.1s;
   }
 
-  .delay-200 {
+  :global(.delay-200) {
     animation-delay: 0.2s;
   }
 
-  .delay-300 {
+  :global(.delay-300) {
     animation-delay: 0.3s;
   }
 
-  .delay-350 {
+  :global(.delay-350) {
     animation-delay: 0.35s;
   }
 
-  .delay-400 {
+  :global(.delay-400) {
     animation-delay: 0.4s;
   }
 
-  .delay-450 {
+  :global(.delay-450) {
     animation-delay: 0.45s;
   }
 
-  .delay-500 {
+  :global(.delay-500) {
     animation-delay: 0.5s;
   }
 
-  .delay-550 {
+  :global(.delay-550) {
     animation-delay: 0.55s;
   }
 
-  .delay-600 {
+  :global(.delay-600) {
     animation-delay: 0.6s;
   }
 
-  .delay-700 {
+  :global(.delay-700) {
     animation-delay: 0.7s;
   }
 
-  .delay-800 {
+  :global(.delay-800) {
     animation-delay: 0.8s;
   }
 
-  .delay-900 {
+  :global(.delay-900) {
     animation-delay: 0.9s;
   }
-</style>
+  </style>

@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carousel Animation</title>
+
+
   <style>
     /* Define the slide-up animation */
     @keyframes slideUp {
@@ -54,8 +50,7 @@
       transform: translateX(100%);
     }
   </style>
-</head>
-<body>
+
   <div id="carouselExampleCaptions" class="relative overflow-hidden" data-twe-carousel-init data-twe-ride="carousel">
     <!-- Carousel indicators -->
     <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0" data-twe-carousel-indicators>
@@ -126,6 +121,8 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.querySelector('#carouselExampleCaptions');
+      if (!carousel) return;
+
       const items = carousel.querySelectorAll('.carousel-item');
       const indicators = carousel.querySelectorAll('[data-twe-carousel-indicators] button');
       let currentIndex = 0;
@@ -136,9 +133,12 @@
 
         // Remove and re-add the animation class to trigger the animation
         const textContainer = items[newIndex].querySelector('.text-container');
-        textContainer.classList.remove('animate-slide-up');
-        void textContainer.offsetWidth; // Trigger reflow
-        textContainer.classList.add('animate-slide-up');
+        if (textContainer) {
+          textContainer.classList.remove('animate-slide-up');
+          // Trigger reflow
+          const reflow = textContainer.offsetWidth;
+          textContainer.classList.add('animate-slide-up');
+        }
 
         if (newIndex > currentIndex) {
           items[currentIndex].classList.add('carousel-item-prev');
@@ -183,11 +183,12 @@
         button.addEventListener('click', () => changeSlide(index));
       });
 
-      carousel.querySelector('[data-twe-slide="next"]').addEventListener('click', nextSlide);
-      carousel.querySelector('[data-twe-slide="prev"]').addEventListener('click', prevSlide);
+      const nextButton = carousel.querySelector('[data-twe-slide="next"]');
+      const prevButton = carousel.querySelector('[data-twe-slide="prev"]');
+
+      if (nextButton) nextButton.addEventListener('click', nextSlide);
+      if (prevButton) prevButton.addEventListener('click', prevSlide);
 
       setInterval(nextSlide, 3000); // Change slide every 3 seconds
     });
   </script>
-</body>
-</html>
