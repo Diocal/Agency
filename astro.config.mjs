@@ -1,15 +1,12 @@
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
 
 
 // https://astro.build/config
 export default defineConfig({
-  site:"https://diocal.github.io",
+  site:"https://diocal.github.io/Agency",
+  base: '/Agency/',
   integrations: [, ],
-  output: 'server',
-  adapter: node({
-    mode: 'standalone', // Especifica el modo de operación del adaptador
-  }),
+  output: 'static',
   server: {
     port: 4321,
     hostname:'localhost',
