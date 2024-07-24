@@ -7,7 +7,8 @@ export default defineConfig({
   base: '/Agency/',
   integrations: [, ],
   output: 'static',
-  base:'/Agency/',
+  outDir:'dist',
+
   server: {
     port: 4321,
     hostname:'localhost',
