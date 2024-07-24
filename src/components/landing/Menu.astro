@@ -1,5 +1,6 @@
 ---
 ---
+
 <style>
   /* Define the styles for the navbar and dropdown */
   .group:hover .group-hover\:block {
@@ -16,6 +17,27 @@
 
   .group-hover\:block {
     display: none;
+  }
+
+  .submenu-open .group-hover\:block {
+    display: block;
+  }
+
+  .submenu {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .submenu a {
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+
+  .submenu a:hover {
+    background-color: #1a202c;
+    color: #fff;
+  }
+
+  #mobile-menu .submenu a {
+    padding-left: 2rem;
   }
 </style>
 
@@ -36,11 +58,11 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
           </a>
-          <div class="absolute left-0 hidden group-hover:block bg-white shadow-md mt-2 rounded-md group-hover:block">
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cybersecurity</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Data analysis</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cryptocurrencies</a>
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Artificial Intelligence</a>
+          <div class="submenu absolute left-0 hidden group-hover:block bg-white shadow-md mt-2 rounded-md">
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Cybersecurity</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Data analysis</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Cryptocurrencies</a>
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Artificial Intelligence</a>
           </div>
         </div>
         <a href="./Quote" class="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-600">Request a Quote</a>
@@ -61,19 +83,19 @@
   <!-- Responsive menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mt-2 rounded-md">
     <a href="./" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">Home</a>
-    <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">About us</a>
+    <a href="./About" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">About us</a>
     <div class="relative group">
-      <a href="#" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 flex items-center">
+      <button id="submenu-button" class="w-full text-left block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100 flex items-center">
         Services
         <svg class="ml-1 w-4 h-4 text-gray-700 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
-      </a>
-      <div class="absolute left-0 hidden group-hover:block bg-white shadow-md mt-2 rounded-md group-hover:block">
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cybersecurity</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Data analysis</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cryptocurrencies</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Artificial Intelligence</a>
+      </button>
+      <div id="submenu" class="submenu hidden bg-white shadow-md mt-2 rounded-md">
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Cybersecurity</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Data analysis</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Cryptocurrencies</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-900 hover:text-white">Artificial Intelligence</a>
       </div>
     </div>
     <a href="./Quote" class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-100">Request a Quote</a>
@@ -83,11 +105,11 @@
 </nav>
 
 <script>
-  const base = "/Agency/";
   document.addEventListener('DOMContentLoaded', function () {
     const menuButton = document.getElementById('menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navbar = document.getElementById('navbar');
+    const submenuButton = document.getElementById('submenu-button');
+    const submenu = document.getElementById('submenu');
 
     if (menuButton && mobileMenu) {
       menuButton.addEventListener('click', function () {
@@ -95,6 +117,13 @@
       });
     }
 
+    if (submenuButton && submenu) {
+      submenuButton.addEventListener('click', function () {
+        submenu.classList.toggle('hidden');
+      });
+    }
+
+    const navbar = document.getElementById('navbar');
     if (navbar) {
       window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
@@ -106,18 +135,18 @@
     }
 
     // Ensure submenus stay visible on hover with delay
-    const submenu = document.querySelectorAll('.relative.group');
-    submenu.forEach(item => {
-      let timeout: number;
+    const submenuItems = document.querySelectorAll('.relative.group');
+    submenuItems.forEach(item => {
+      let timeout;
       item.addEventListener('mouseenter', () => {
-        const dropdown = item.querySelector('.group-hover\\:block') as HTMLElement;
+        const dropdown = item.querySelector('.group-hover\\:block');
         if (dropdown) {
           clearTimeout(timeout);
           dropdown.style.display = 'block';
         }
       });
       item.addEventListener('mouseleave', () => {
-        const dropdown = item.querySelector('.group-hover\\:block') as HTMLElement;
+        const dropdown = item.querySelector('.group-hover\\:block');
         if (dropdown) {
           timeout = window.setTimeout(() => {
             dropdown.style.display = 'none';

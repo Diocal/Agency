@@ -1,21 +1,136 @@
 ---
 ---
 
-<section class="bg-black text-white py-16">
-  <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center mb-16">
-    <div class="md:w-1/2 mb-8 md:mb-0">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap">
+</head>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, and Opera */
+  }
+  .contact-section {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    color: #fff;
+    padding: 2rem 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .contact-details img, .contact-form img {
+    width: 100px;
+    margin-top: 1rem;
+  }
+  .contact-details {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .contact-form {
+    background: #fff;
+    color: #000;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+  }
+  .contact-form input, .contact-form textarea, .contact-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .contact-form input:focus, .contact-form textarea:focus, .contact-form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  .contact-form button {
+    background: #e83e8c;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .contact-form button:hover {
+    background: #dc3545;
+  }
+  .hidden {
+    display: none;
+  }
+  .flex {
+    display: flex;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-lg {
+    font-size: 1.125rem;
+  }
+  .text-4xl {
+    font-size: 2.25rem;
+  }
+  .font-bold {
+    font-weight: 700;
+  }
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  .mt-8 {
+    margin-top: 2rem;
+  }
+  @media (min-width: 768px) {
+    .md\:w-1\/2 {
+      width: 50%;
+    }
+    .md\:mb-0 {
+      margin-bottom: 0;
+    }
+    .md\:block {
+      display: block;
+    }
+  }
+</style>
+
+<section class="contact-section">
+  <div class="container mx-auto px-4 py-20 flex flex-col md:flex-row justify-between items-center">
+    <div class="contact-details md:w-1/2 mb-8 md:mb-0">
       <h2 class="text-4xl font-bold mb-4">Contact Us</h2>
-      <p class="text-lg mb-2">Let's talk</p>
 
       <p class="text-lg mb-2">Miami | USA</p>
       <p class="text-lg mb-2">contact@softlution.com</p>
       <p class="text-lg mb-2">(+69) 45442323</p>
-      <p class="text-lg mb-2">(+69) 345 600 </p>
-      <div class="mt-8">
-        <img src="/path-to-your-left-hand-image.png" alt="Hand Image" class="w-32">
-      </div>
+      <p class="text-lg mb-2">(+69) 345 600</p>
+
     </div>
-    <div class="md:w-1/2 bg-white text-black p-8 rounded-lg shadow-lg">
+    <div class="contact-form md:w-1/2 bg-white text-black p-8 rounded-lg shadow-lg">
       <form hx-post="/submit-form" hx-target="#form-response" hx-swap="outerHTML">
         <div class="mb-4">
           <label for="name" class="block text-sm font-bold mb-2">Name*</label>
@@ -49,9 +164,14 @@
       </form>
     </div>
   </div>
-
-  <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-    <div class="md:w-1/2 bg-white text-black p-8 rounded-lg shadow-lg">
+<div class="container mx-auto px-4 py-20 flex flex-col md:flex-row justify-between items-center"
+  <div class="contact-details md:w-1/2 mb-8 md:mb-0">
+    <h2 class="text-4xl font-bold mb-4">Work with Us</h2>
+  </div>
+  </div>
+  </div>
+  <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center mt-16">
+    <div class="contact-form md:w-1/2 bg-white text-black p-8 rounded-lg shadow-lg">
       <h2 class="text-4xl font-bold mb-4 text-green-500">Work with us</h2>
       <form hx-post="/submit-form" hx-target="#form-response" hx-swap="outerHTML">
         <div class="mb-4">
@@ -122,9 +242,7 @@
         </div>
       </form>
     </div>
-    <div class="hidden md:block mt-8">
-      <img src="/path-to-your-right-hand-image.png" alt="Hand Image" class="w-32">
-    </div>
+
   </div>
 </section>
 
